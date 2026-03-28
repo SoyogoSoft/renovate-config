@@ -1,0 +1,34 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "group:allNonMajor",
+    ":maintainLockFilesWeekly",
+    ":semanticCommitTypeAll(chore)",
+    "schedule:earlyMondays"
+  ],
+  "enabledManagers": ["github-actions", "dockerfile", "nuget", "npm", "cargo"],
+  "configMigration": true,
+  "dependencyDashboard": false,
+  "rangeStrategy": "bump",
+  "rebaseWhen": "auto",
+  "timezone": "Asia/Tokyo",
+  "minimumReleaseAge": "3 days",
+  "ignoreDeps": [
+    "node"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": "major",
+      "addLabels": [
+        "major"
+      ]
+    },
+    {
+      "matchPackageNames": ["node"],
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["engines"],
+      "enabled": false
+    }
+  ]
+}
